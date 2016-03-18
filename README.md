@@ -5,13 +5,17 @@ Send your Kafka offset lags to StatsD.
 ## Usage
 
 ```
-kafka-statsd --zookeeper --zookeeper-addrs host1:2181,host2:2181 --statsd-addr=statsd:8125 --prefix kafka.
+kafka-statsd --zookeeper-addrs host1:2181,host2:2181 --statsd-addr=statsd:8125 --statsd-prefix kafka.
 ```
 
 ## Install
 
 ```
 $ go get github.com/travisjeffery/kafka-statsd
+```
+
+```
+$ docker run -d travisjeffery/kafka-statsd --zookeeper-addrs host1:2181,host2:2181 --statsd-addr=statsd:8125 --statsd-prefix kafka.
 ```
 
 ## License
