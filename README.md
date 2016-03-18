@@ -10,9 +10,13 @@ kafka-statsd --zookeeper-addrs host1:2181,host2:2181 --statsd-addr=statsd:8125 -
 
 ## Install
 
+Go get:
+
 ```
 $ go get github.com/travisjeffery/kafka-statsd
 ```
+
+Docker:
 
 ```
 $ docker run -d travisjeffery/kafka-statsd --zookeeper-addrs host1:2181,host2:2181 --statsd-addr=statsd:8125 --statsd-prefix kafka.
