@@ -33,10 +33,12 @@ func main() {
 	defer stats.Close()
 
 	var zookeeperNodes []string
-	zookeeperNodes, _ = kazoo.ParseConnectionString(*zkAddrs)
+	zookeeperNodes, chroot := kazoo.ParseConnectionString(*zkAddrs)
 
 	var kz *kazoo.Kazoo
-	if kz, err = kazoo.NewKazoo(zookeeperNodes, nil); err != nil {
+	conf := kazoo.NewConfig()
+	conf.Chroot = chroot
+	if kz, err = kazoo.NewKazoo(zookeeperNodes, conf); err != nil {
 		log.Error("%s", err)
 		return
 	}
