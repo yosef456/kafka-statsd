@@ -21,6 +21,10 @@ kafka-statsd --zookeeper-addrs host1:2181,host2:2181 --statsd-addr=statsd:8125 -
 
 ## Install
 
+Binary download:
+
+https://github.com/travisjeffery/kafka-statsd/releases
+
 Go get:
 
 ```
