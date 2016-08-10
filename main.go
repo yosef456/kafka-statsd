@@ -57,12 +57,6 @@ func main() {
 	}
 	defer client.Close()
 
-	consumerGroupList, err := kz.Consumergroups()
-	if err != nil {
-		log.Error("%s", err)
-		return
-	}
-
 	ticker := time.NewTicker(time.Duration(*interval) * time.Second)
 	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, os.Interrupt)
@@ -71,6 +65,13 @@ func main() {
 		select {
 		case <-ticker.C:
 			log.Info("Refreshing offset lag")
+
+			consumerGroupList, err := kz.Consumergroups()
+
+			if err != nil {
+				log.Error("%s", err)
+				return
+			}
 
 			for _, cg := range consumerGroupList {
 				offsets, err := cg.FetchAllOffsets()
